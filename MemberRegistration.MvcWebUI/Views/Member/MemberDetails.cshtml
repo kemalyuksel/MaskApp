@@ -1,0 +1,47 @@
+﻿@using MemberRegistrationEntities.Concrete
+@model Member
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MemberDetails</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div class="text-center mt-5">
+        <h6 class="text-center text-success">@TempData["give"]</h6>
+        <h6 class="text-center text-danger">@TempData["error"]</h6>
+        <h4>
+            @Model.FirstName @Model.LastName
+        </h4>
+
+        <p>
+            @if (Model.IsMask == false)
+            {
+                using (Html.BeginForm("Update", "Member", FormMethod.Post))
+                {
+                    @Html.HiddenFor(i => Model.Id)
+                    <input type="text" placeholder=" KODU GİRİNİZ" id="key" name="key" />
+                    <br />
+                    <button type="submit" class="btn m-t-10 m-r-5 btn-rounded btn-success mt-2" style="margin-top:-5px;margin-left:10px" value="Güncelle">Maske Ver</button>
+                    <a href="/Member/Index" class="btn m-t-10 m-r-5 ml-3 btn-rounded btn-outline-primary mt-2">Listeye Dön</a>
+                }
+
+            }
+            else
+            {
+                <a href="/Member/Index" class="btn m-t-10 m-r-5 ml-3 btn-rounded btn-primary mt-2">←  Maske Zaten Alınmış</a>
+            }
+        </p>
+    </div>
+</body>
+</html>

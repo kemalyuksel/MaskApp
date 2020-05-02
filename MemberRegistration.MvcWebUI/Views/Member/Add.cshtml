@@ -1,0 +1,79 @@
+﻿@model MemberRegistration.MvcWebUI.Models.MemberAddViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kayıt Formu</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</head>
+<body class="bg-light">
+
+    <div class="container">
+        
+        <div class="py-5 text-center">
+            <h2>Kayıt Formu</h2>
+            <p class="lead">Lütfen Bilgilerinizi Giriniz.</p>
+            <p class="lead text-danger">@Html.ValidationMessage("MemberException")</p>
+            <p class="lead text-success"><b>@ViewBag.mesaj</b></p>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-12 order-md-1">
+                <h4 class="mb-3">Bilgileriniz</h4>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Ad</label>
+                            @Html.TextBoxFor(m => m.Member.FirstName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Member.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Soyad</label>
+                            @Html.TextBoxFor(m => m.Member.LastName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Member.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address">T.C. Kimlik No</label>
+                        @Html.TextBoxFor(m => m.Member.TcNo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Member.TcNo, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address2">Doğum Tarihi </label>
+                        @Html.TextBoxFor(m => m.Member.DateOfBirth, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Member.DateOfBirth, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email">Email (<b class="text-danger"> Maske kodunuz mail adresinize gönderilmektedir </b>)</label>
+                        @Html.TextBoxFor(m => m.Member.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Member.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Kayıt Ol</button>
+
+                }
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
