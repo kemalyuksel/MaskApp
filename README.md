@@ -1,7 +1,7 @@
 # MaskApp
-Mask App With KPS Web Service 
+ Mask App With KPS Web Service 
 
-Layer Architecture Asp.net
+ Layer Architecture Asp.net
 
 
-Web Service Link : https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL
+ Web Service Link : https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL
